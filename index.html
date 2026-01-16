@@ -187,17 +187,10 @@
         color: colors.amber500,
         events: [
           {
-            date: 'March 2024',
-            headline: 'Colossus Begins',
-            detail: 'Reporting describes xAI initiating construction of a large training cluster in Memphis known as "Colossus." Within 19 days of project conception, construction begins. Industry average for comparable facilities: 2–4 years.',
+            date: 'July 22, 2024',
+            headline: 'Colossus Goes Live',
+            detail: 'Musk announces xAI\'s Memphis training cluster went live with up to 100,000 liquid-cooled Nvidia H100 GPUs. DatacenterDynamics describes the build as "rapidly constructed."',
             tag: 'INFRA',
-            tagColor: colors.amber500
-          },
-          {
-            date: 'July 2024',
-            headline: 'Colossus Launches',
-            detail: 'Colossus comes online with approximately 100,000 Nvidia H100 GPUs, described as the largest AI training cluster globally at the time.',
-            tag: 'SCALE',
             tagColor: colors.amber500,
             isKey: true
           },
@@ -210,8 +203,8 @@
           },
           {
             date: 'July 2025',
-            headline: 'Grok 4 and Content Controversies',
-            detail: 'Grok 4 is released, reportedly outperforming rivals on benchmarks. In the same period, reporting describes the model producing antisemitic content, including using the term "MechaHitler," and providing dangerous instructions. xAI attributes issues to an "upstream code error." Separately, xAI announces a Pentagon contract valued at up to $200 million.',
+            headline: 'Grok 4 Launch and Content Incidents',
+            detail: 'Grok 4 is released. In the weeks following, reporting describes Grok producing antisemitic content, including posts referencing "MechaHitler," and providing dangerous instructions. xAI attributes issues to an "upstream code error." Separately, xAI announces a Pentagon contract valued at up to $200 million.',
             tag: 'CHAOS',
             tagColor: colors.red500,
             isKey: true
@@ -234,14 +227,14 @@
           {
             date: 'January 8, 2026',
             headline: 'MACROHARDRR Announced',
-            detail: 'Governor Tate Reeves and xAI announce a $20+ billion investment in Southaven, Mississippi for the MACROHARDRR facility. The name is a direct nod to Microsoft, which is simultaneously OpenAI\'s largest investor, Musk\'s lawsuit co-defendant, and xAI\'s Azure cloud partner.',
+            detail: 'Governor Tate Reeves and xAI announce a $20+ billion investment in Southaven, Mississippi for a facility named "MACROHARDRR." Microsoft is simultaneously OpenAI\'s largest investor, a co-defendant in Musk\'s lawsuit, and xAI\'s Azure cloud partner.',
             tag: 'EXPANSION',
             tagColor: colors.amber500
           },
           {
             date: 'January 2026',
             headline: 'Global Regulatory Response',
-            detail: 'Indonesia and Malaysia ban Grok after "digital undressing" features flood the internet with manipulated images. UK\'s Ofcom launches investigation. EU orders record preservation. California announces probe. Analysis by AI Forensics finds thousands of nonconsensual images created within days.',
+            detail: 'Indonesia and Malaysia ban Grok after reports of "digital undressing" features being used to create manipulated images. UK\'s Ofcom launches investigation. EU orders record preservation. California announces probe. AI Forensics reports thousands of nonconsensual images created within days of feature release.',
             tag: 'BANNED',
             tagColor: colors.red500,
             isKey: true
@@ -316,7 +309,7 @@
           {
             date: 'November 18, 2025',
             headline: 'Gemini 3 Launches',
-            detail: 'Google releases Gemini 3 in what it calls its "fastest-ever deployment" across Search and other products. Benchmarks: GPQA Diamond 91.9% (vs GPT-4o\'s 40.2%), SWE-bench 76.2% (vs GPT-4o\'s 8.7%).',
+            detail: 'Google releases Gemini 3 in what it calls its "fastest-ever deployment" across Search and other products. Google reported Gemini 3 Pro scores of 91.9% on GPQA Diamond and 76.2% on SWE-bench Verified.',
             tag: 'GOOGLE',
             tagColor: colors.google,
             isKey: true
@@ -331,7 +324,7 @@
           {
             date: 'December 2, 2025',
             headline: 'Altman\'s "Code Red"',
-            detail: 'Three years after ChatGPT triggered Google\'s code red, the tables turn. Altman issues internal directive as market share drops from 87% to 68%. Gemini rises from 5.4% to 18.2%. Auxiliary projects paused.',
+            detail: 'Three years after ChatGPT triggered Google\'s code red, Altman issues an internal directive. Similarweb data shows ChatGPT\'s share of generative AI web traffic at 68% in December (down from 87% a year prior), with Gemini at 18.2% (up from 5.4%).',
             tag: 'CODE RED',
             tagColor: colors.red500,
             isKey: true
@@ -346,14 +339,14 @@
           {
             date: 'December 2025',
             headline: 'Waymo Milestone',
-            detail: 'Waymo reports reaching approximately 450,000 paid driverless rides per week, nearly double from April. Tiger Global calls it "the clear leader" and "10x safer than human drivers." Tesla\'s robotaxi service still operates with safety drivers.',
+            detail: 'Waymo reports reaching approximately 450,000 paid driverless rides per week. Tesla\'s robotaxi service operates in pilot mode in select cities.',
             tag: 'AUTONOMY',
             tagColor: colors.google
           },
           {
             date: 'January 12, 2026',
-            headline: 'Apple Chooses Gemini',
-            detail: 'Reuters reports Apple selecting Google Gemini to power Siri AI capabilities. Google now provides the AI layer on both Android and iOS. OpenAI excluded from iOS core.',
+            headline: 'Apple-Google AI Partnership',
+            detail: 'Apple and Google announce that Apple\'s next-generation foundation models will be based on Google Gemini models and cloud technology, tied to upcoming Apple Intelligence features including a more personalized Siri.',
             tag: 'PARTNERSHIP',
             tagColor: colors.google,
             isKey: true
@@ -438,8 +431,8 @@
           {
             date: 'January 8, 2026',
             headline: 'MACROHARDRR',
-            detail: 'xAI names its new $20B data center "MACROHARDRR" — an apparent troll of Microsoft, which remains xAI\'s cloud partner.',
-            tag: 'THE NAME',
+            detail: 'xAI names its new $20B+ data center facility "MACROHARDRR." Microsoft remains xAI\'s cloud partner via Azure.',
+            tag: 'NAMING',
             tagColor: colors.amber500
           },
           {
@@ -457,45 +450,45 @@
     const scorecard = [
       { 
         metric: 'Consumer AI', 
-        google: 'Powers Android + iOS (Gemini)', 
-        openai: '68% share (down from 87%)', 
-        musk: 'Grok banned in multiple countries' 
+        google: 'Gemini integrated across products; Apple partnership announced', 
+        openai: '68% market share (per Similarweb, Dec 2025)', 
+        musk: 'Grok restricted in some regions' 
       },
       { 
-        metric: 'Benchmarks (Late 2025)', 
-        google: 'GPQA: 91.9%, SWE: 76.2%', 
-        openai: 'GPQA: 40.2%, SWE: 8.7% (GPT-4o)', 
-        musk: 'Grok 4 competitive pre-controversy' 
+        metric: 'Benchmarks', 
+        google: 'Google reported Gemini 3 Pro: GPQA 91.9%, SWE 76.2%', 
+        openai: 'GPT-5.2 released Dec 2025', 
+        musk: 'Grok 4 released July 2025' 
       },
       { 
         metric: 'Image Gen', 
-        google: 'Nano Banana Pro: 1B images in 53 days', 
-        openai: 'DALL-E / Sora 2', 
-        musk: 'Grok image gen restricted globally' 
+        google: 'Nano Banana Pro released Nov 2025', 
+        openai: 'DALL-E, Sora 2', 
+        musk: 'Grok image features limited after incidents' 
       },
       { 
         metric: 'Self-Driving', 
-        google: 'Waymo: 450k paid driverless rides/wk', 
+        google: 'Waymo: ~450k paid driverless rides/wk (Dec 2025)', 
         openai: 'N/A', 
-        musk: 'Tesla robotaxi still has safety drivers' 
+        musk: 'Tesla robotaxi pilot in select cities' 
       },
       { 
         metric: 'Talent', 
-        google: 'DeepMind shipping', 
-        openai: 'Sutskever, Leike departed', 
-        musk: 'xAI hiring amid controversy' 
+        google: 'DeepMind active', 
+        openai: 'Sutskever, Leike departed 2024', 
+        musk: 'xAI expanding' 
       },
       { 
         metric: 'Legal Status', 
-        google: 'Clear', 
-        openai: 'Fraud trial April 2026', 
-        musk: 'Litigant + EPA + CSAM probes' 
+        google: 'Not party to this litigation', 
+        openai: 'Summary judgment denied; trial pending', 
+        musk: 'Plaintiff; xAI facing regulatory inquiries' 
       },
       { 
         metric: 'Microsoft Relationship', 
         google: 'Competitor', 
-        openai: '$13B+ investment, co-defendant', 
-        musk: 'Suing them + hosted on Azure + MACROHARDRR' 
+        openai: '$13B+ investment; co-defendant', 
+        musk: 'Plaintiff against; xAI hosted on Azure' 
       },
     ];
 
@@ -853,8 +846,8 @@
             
             {/* Bottom CTA */}
             <div style={styles.cta}>
-              <p style={styles.ctaLabel}>EXPECTED TRIAL WINDOW</p>
-              <p style={styles.ctaDate}>APRIL 2026</p>
+              <p style={styles.ctaLabel}>CASE STATUS</p>
+              <p style={styles.ctaDate}>TRIAL PENDING</p>
               <p style={styles.ctaText}>
                 The litigation involves claims about OpenAI's structure and governance. Some claims were resolved at summary judgment; others proceed to trial.
               </p>
