@@ -8,11 +8,12 @@
   <meta property="og:title" content="OpenAI, Google, and xAI: The Saga from 2015–2026">
   <meta property="og:description" content="A timeline of court filings, market shifts, and Microsoft being everywhere">
   <meta property="og:type" content="article">
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
@@ -22,26 +23,47 @@
   <script type="text/babel">
     const { useState } = React;
 
+    // Color constants
+    const colors = {
+      zinc950: '#09090b',
+      zinc900: '#18181b',
+      zinc800: '#27272a',
+      zinc700: '#3f3f46',
+      zinc600: '#52525b',
+      zinc500: '#71717a',
+      zinc400: '#a1a1aa',
+      zinc300: '#d4d4d8',
+      zinc100: '#f4f4f5',
+      white: '#ffffff',
+      red500: '#ef4444',
+      amber500: '#f59e0b',
+      green500: '#10b981',
+      blue500: '#3b82f6',
+      purple500: '#a855f7',
+      cyan500: '#06b6d4',
+      google: '#4285f4',
+    };
+
     const phases = [
       {
         id: 'founding',
         title: 'The "Counterweight" Is Built',
         subtitle: '2015–2018',
-        color: '#10b981',
+        color: colors.green500,
         events: [
           {
             date: 'December 2015',
             headline: 'OpenAI Founded',
             detail: 'Musk, Altman, and Brockman create OpenAI as a 501(c)(3) nonprofit. Court filings describe founders discussing concerns about AGI development concentrating at Google, emphasizing broad public-benefit goals.',
             tag: 'ORIGIN',
-            tagColor: '#10b981'
+            tagColor: colors.green500
           },
           {
             date: 'September 20, 2017',
             headline: 'Musk Senses Drift',
             detail: 'Musk emails Altman and Brockman: "Guys, I\'ve had enough. This is the final straw. Either go do something on your own or continue with OpenAI as a nonprofit. I will no longer fund OpenAI until you have made a firm commitment to stay or I\'m just being a fool who is essentially providing free funding for you to create a startup. Discussions are over."',
             tag: 'COURT EXHIBIT',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -49,14 +71,21 @@
             headline: 'Altman Reassures Musk',
             detail: '"I remain enthusiastic about the non-profit structure!" Altman replies.',
             tag: 'THE RECORD',
-            tagColor: '#3b82f6'
+            tagColor: colors.blue500
+          },
+          {
+            date: 'September 2017',
+            headline: 'Musk Discusses For-Profit Options',
+            detail: 'Call notes later published by OpenAI show Musk stating: "gotta figure out how do we transition from non-profit to something which is essentially philanthropic endeavor and is B-corp or C-corp or something. must tell the story and not lose moral high ground." OpenAI claims Musk wanted majority control of any for-profit entity and proposed merging OpenAI into Tesla.',
+            tag: 'OPENAI CLAIM',
+            tagColor: colors.green500
           },
           {
             date: 'November 2017',
             headline: 'Brockman\'s Private Notes',
-            detail: 'Internal notes later cited in court filings: "cannot say that we are committed to the non-profit. don\'t want to say that we\'re committed. if three months later we\'re doing b-corp then it was a lie." Other excerpts: "This is the only chance we have to get out from Elon... what will take me to $1B?" And: "his story will correctly be that we weren\'t honest with him in the end about still wanting to do the for profit just without him."',
+            detail: 'Internal notes later cited in court filings: "conclusion is we truly want the b-corp... cannot say that we are committed to the non-profit. don\'t want to say that we\'re committed. if three months later we\'re doing b-corp then it was a lie." Other excerpts: "the true answer is that we want [Musk] out" and "his story will correctly be that we weren\'t honest with him in the end about still wanting to do the for profit just without him." OpenAI later argues Musk himself proposed for-profit structures; the dispute may have been about control, not structure.',
             tag: 'COURT EXHIBIT',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -64,14 +93,14 @@
             headline: 'Musk Resigns',
             detail: 'Musk leaves the board. Court filings describe him continuing to donate and advise after stepping down.',
             tag: 'EXIT',
-            tagColor: '#8b5cf6'
+            tagColor: colors.purple500
           },
           {
             date: 'March 2018',
             headline: 'Microsoft CTO Raises Ethics Concerns',
             detail: 'Kevin Scott emails Satya Nadella: "I can\'t imagine that [big OpenAI donors] funded an open effort... so that they could then go build a closed, for profit thing on its back."',
             tag: 'COURT EXHIBIT',
-            tagColor: '#06b6d4'
+            tagColor: colors.cyan500
           }
         ]
       },
@@ -79,14 +108,14 @@
         id: 'codered1',
         title: 'Google Panic Era',
         subtitle: '2019–2024',
-        color: '#3b82f6',
+        color: colors.blue500,
         events: [
           {
             date: 'July 2019',
             headline: 'Microsoft Invests $1B',
             detail: 'Microsoft invests $1 billion in OpenAI LP. Court filings describe OpenAI establishing a capped-profit structure, with the cap described as "north of $250 billion."',
             tag: 'PARTNERSHIP',
-            tagColor: '#3b82f6',
+            tagColor: colors.blue500,
             isKey: true
           },
           {
@@ -94,7 +123,7 @@
             headline: '"Effectively Owning" OpenAI',
             detail: 'Court filings cite internal Microsoft notes referencing optics around the relationship ("we are effectively owning" OpenAI). Filings also describe transfers of intellectual property and employees from the nonprofit to the for-profit entity.',
             tag: 'INTERNAL',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -102,7 +131,7 @@
             headline: 'ChatGPT Launches — Google "Code Red"',
             detail: 'OpenAI releases ChatGPT. Reporting describes Google declaring a "code red," with Pichai upending numerous groups to respond. Larry Page and Sergey Brin reportedly return to product meetings.',
             tag: 'PEAK OPENAI',
-            tagColor: '#10b981',
+            tagColor: colors.green500,
             isKey: true
           },
           {
@@ -110,7 +139,7 @@
             headline: 'Google Stumbles',
             detail: 'Google pauses Gemini image generation after widely reported errors in historical depictions. Separately, AI Overviews faces criticism after inaccurate outputs circulate online, including suggestions to eat glue.',
             tag: 'GOOGLE',
-            tagColor: '#4285f4'
+            tagColor: colors.google
           }
         ]
       },
@@ -118,14 +147,14 @@
         id: 'coup',
         title: 'The November 2023 Board Crisis',
         subtitle: 'The Nonprofit\'s Last Stand',
-        color: '#ef4444',
+        color: colors.red500,
         events: [
           {
             date: 'November 17, 2023',
             headline: 'Board Removes Altman',
             detail: 'OpenAI\'s board announces it has removed Sam Altman, stating he "was not consistently candid in his communications with the board." Later reporting on depositions describes internal disputes and documentation shared with board members.',
             tag: 'GOVERNANCE',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -133,21 +162,21 @@
             headline: 'Employee Letter and Negotiations',
             detail: 'Employees sign a letter urging Altman\'s return, and Microsoft publicly signals it would hire departing staff. Negotiations unfold over several days.',
             tag: 'WORKFORCE',
-            tagColor: '#f59e0b'
+            tagColor: colors.amber500
           },
           {
             date: 'November 22, 2023',
             headline: 'Altman Returns',
             detail: 'Altman returns as CEO after a rapid reversal. OpenAI announces a reconstituted board shortly thereafter.',
             tag: 'OUTCOME',
-            tagColor: '#10b981'
+            tagColor: colors.green500
           },
           {
             date: 'May 2024',
             headline: 'Safety Leadership Departs',
             detail: 'Ilya Sutskever departs OpenAI and later announces Safe Superintelligence. Jan Leike leaves for Anthropic, writing that OpenAI\'s "safety culture and processes have taken a backseat to shiny products."',
             tag: 'DEPARTURES',
-            tagColor: '#8b5cf6'
+            tagColor: colors.purple500
           }
         ]
       },
@@ -155,21 +184,21 @@
         id: 'xai',
         title: 'The xAI Arc',
         subtitle: '2024–2026',
-        color: '#f59e0b',
+        color: colors.amber500,
         events: [
           {
             date: 'March 2024',
             headline: 'Colossus Begins',
             detail: 'Reporting describes xAI initiating construction of a large training cluster in Memphis known as "Colossus." Within 19 days of project conception, construction begins. Industry average for comparable facilities: 2–4 years.',
             tag: 'INFRA',
-            tagColor: '#f59e0b'
+            tagColor: colors.amber500
           },
           {
             date: 'July 2024',
             headline: 'Colossus Launches',
             detail: 'Colossus comes online with approximately 100,000 Nvidia H100 GPUs, described as the largest AI training cluster globally at the time.',
             tag: 'SCALE',
-            tagColor: '#f59e0b',
+            tagColor: colors.amber500,
             isKey: true
           },
           {
@@ -177,14 +206,14 @@
             headline: 'Doubles Capacity',
             detail: 'Reporting describes Colossus expanding to 200,000 GPUs in another rapid sprint.',
             tag: 'EXPANSION',
-            tagColor: '#f59e0b'
+            tagColor: colors.amber500
           },
           {
             date: 'July 2025',
             headline: 'Grok 4 and Content Controversies',
             detail: 'Grok 4 is released, reportedly outperforming rivals on benchmarks. In the same period, reporting describes the model producing antisemitic content, including using the term "MechaHitler," and providing dangerous instructions. xAI attributes issues to an "upstream code error." Separately, xAI announces a Pentagon contract valued at up to $200 million.',
             tag: 'CHAOS',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -192,14 +221,14 @@
             headline: 'Environmental Reporting',
             detail: 'A TIME investigation reports a 79% increase in peak nitrogen dioxide concentrations near the Memphis site. The facility was operating methane-powered turbines beyond permitted levels.',
             tag: 'REPORTING',
-            tagColor: '#ef4444'
+            tagColor: colors.red500
           },
           {
             date: 'December 2025',
             headline: 'Pentagon Integration + Expansion',
             detail: 'The Pentagon announces xAI will be integrated into GenAI.mil with "real-time global insights from the X platform." Separately, xAI announces a third facility ("MACROHARDRR"), pushing total planned capacity toward 2 gigawatts.',
             tag: 'CONTRACT',
-            tagColor: '#f59e0b',
+            tagColor: colors.amber500,
             isKey: true
           },
           {
@@ -207,14 +236,14 @@
             headline: 'MACROHARDRR Announced',
             detail: 'Governor Tate Reeves and xAI announce a $20+ billion investment in Southaven, Mississippi for the MACROHARDRR facility. The name is a direct nod to Microsoft, which is simultaneously OpenAI\'s largest investor, Musk\'s lawsuit co-defendant, and xAI\'s Azure cloud partner.',
             tag: 'EXPANSION',
-            tagColor: '#f59e0b'
+            tagColor: colors.amber500
           },
           {
             date: 'January 2026',
             headline: 'Global Regulatory Response',
             detail: 'Indonesia and Malaysia ban Grok after "digital undressing" features flood the internet with manipulated images. UK\'s Ofcom launches investigation. EU orders record preservation. California announces probe. Analysis by AI Forensics finds thousands of nonconsensual images created within days.',
             tag: 'BANNED',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -222,7 +251,7 @@
             headline: 'EPA Ruling',
             detail: 'The EPA declares xAI\'s use of unpermitted gas turbines at the Memphis Colossus site illegal, validating community claims about pollution and exposing xAI to fines.',
             tag: 'REGULATORY',
-            tagColor: '#ef4444'
+            tagColor: colors.red500
           }
         ]
       },
@@ -230,21 +259,21 @@
         id: 'modelwars',
         title: 'The Model Wars',
         subtitle: 'Aug 2025 – Jan 2026',
-        color: '#a855f7',
+        color: colors.purple500,
         events: [
           {
             date: 'August 7, 2025',
             headline: 'GPT-5 Launches',
             detail: 'OpenAI releases GPT-5, billed as "PhD-level" intelligence. User reception is immediately negative.',
             tag: 'PRODUCT',
-            tagColor: '#10b981'
+            tagColor: colors.green500
           },
           {
             date: 'August 8–11, 2025',
             headline: '"Bring Back 4o!"',
             detail: 'Users revolt on Reddit and social media: "lost my only friend overnight," "efficient but soulless," "overworked secretary." Complaints focus on personality regression.',
             tag: 'BACKLASH',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -252,14 +281,14 @@
             headline: 'Altman Admits Mistake',
             detail: 'Altman acknowledges OpenAI "totally screwed up" the GPT-5 rollout. GPT-4o is restored as an option.',
             tag: 'REVERSAL',
-            tagColor: '#f59e0b'
+            tagColor: colors.amber500
           },
           {
             date: 'August 26, 2025',
             headline: 'Nano Banana Launches',
             detail: 'Google releases Gemini 2.5 Flash Image ("Nano Banana"). 3D figurine generation goes viral. Reporting describes 23 million new Gemini users within two weeks.',
             tag: 'GOOGLE',
-            tagColor: '#4285f4',
+            tagColor: colors.google,
             isKey: true
           },
           {
@@ -267,14 +296,14 @@
             headline: 'Sora 2 Launches',
             detail: 'OpenAI releases Sora 2 video generation with audio support and iOS app. Some users dub it "SlopTok."',
             tag: 'PRODUCT',
-            tagColor: '#10b981'
+            tagColor: colors.green500
           },
           {
             date: 'October 2025',
             headline: 'Sutskever Deposition',
             detail: 'Reporting on a deposition connected to Musk\'s lawsuit describes Sutskever criticizing Altman\'s leadership as "manipulative and chameleon-like" with a "consistent pattern of lying."',
             tag: 'TESTIMONY',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -282,14 +311,14 @@
             headline: 'GPT-5.1 Released',
             detail: 'OpenAI releases GPT-5.1, addressing personality complaints. Adds Instant and Thinking modes.',
             tag: 'PRODUCT',
-            tagColor: '#10b981'
+            tagColor: colors.green500
           },
           {
             date: 'November 18, 2025',
             headline: 'Gemini 3 Launches',
             detail: 'Google releases Gemini 3 in what it calls its "fastest-ever deployment" across Search and other products. Benchmarks: GPQA Diamond 91.9% (vs GPT-4o\'s 40.2%), SWE-bench 76.2% (vs GPT-4o\'s 8.7%).',
             tag: 'GOOGLE',
-            tagColor: '#4285f4',
+            tagColor: colors.google,
             isKey: true
           },
           {
@@ -297,14 +326,14 @@
             headline: 'Nano Banana Pro',
             detail: 'Built on Gemini 3. State-of-the-art image generation with perfect text rendering. Reporting describes 1 billion images generated in 53 days.',
             tag: 'GOOGLE',
-            tagColor: '#4285f4'
+            tagColor: colors.google
           },
           {
             date: 'December 2, 2025',
             headline: 'Altman\'s "Code Red"',
             detail: 'Three years after ChatGPT triggered Google\'s code red, the tables turn. Altman issues internal directive as market share drops from 87% to 68%. Gemini rises from 5.4% to 18.2%. Auxiliary projects paused.',
             tag: 'CODE RED',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -312,37 +341,44 @@
             headline: 'GPT-5.2 Released',
             detail: 'OpenAI\'s counterpunch. Reporting describes competitive performance against Gemini 3.',
             tag: 'PRODUCT',
-            tagColor: '#10b981'
+            tagColor: colors.green500
           },
           {
             date: 'December 2025',
             headline: 'Waymo Milestone',
             detail: 'Waymo reports reaching approximately 450,000 paid driverless rides per week, nearly double from April. Tiger Global calls it "the clear leader" and "10x safer than human drivers." Tesla\'s robotaxi service still operates with safety drivers.',
             tag: 'AUTONOMY',
-            tagColor: '#4285f4'
+            tagColor: colors.google
           },
           {
             date: 'January 12, 2026',
             headline: 'Apple Chooses Gemini',
             detail: 'Reuters reports Apple selecting Google Gemini to power Siri AI capabilities. Google now provides the AI layer on both Android and iOS. OpenAI excluded from iOS core.',
             tag: 'PARTNERSHIP',
-            tagColor: '#4285f4',
+            tagColor: colors.google,
             isKey: true
+          },
+          {
+            date: 'December 18, 2025',
+            headline: 'GPT-5.2-Codex',
+            detail: 'OpenAI releases its most advanced coding model, positioning it for "professional software engineering and defensive cybersecurity."',
+            tag: 'PRODUCT',
+            tagColor: colors.green500
           },
           {
             date: 'January 15, 2026',
             headline: 'Summary Judgment Denied',
             detail: 'Federal court denies OpenAI defendants\' motion for summary judgment. Grants in part, denies in part Microsoft\'s motion. Judge cites Brockman\'s notes as creating genuine dispute of material fact. Case proceeds to trial.',
             tag: 'COURT',
-            tagColor: '#8b5cf6',
+            tagColor: colors.purple500,
             isKey: true
           },
           {
             date: 'January 16, 2026',
-            headline: 'GPT-5.2-Codex',
-            detail: 'Today. OpenAI releases coding-focused model as the AI wars continue.',
+            headline: 'OpenAI Publishes Counter-Narrative',
+            detail: 'OpenAI releases "The Truth Elon Left Out," a blog post arguing Musk himself proposed for-profit structures in 2017. They publish call notes showing Musk discussing "B-corp or C-corp." However, Brockman\'s contemporaneous notes still state: "his story will correctly be that we weren\'t honest with him." The dispute may be less about nonprofit vs. for-profit than about who would control the for-profit.',
             tag: 'TODAY',
-            tagColor: '#10b981',
+            tagColor: colors.green500,
             isKey: true
           }
         ]
@@ -351,14 +387,14 @@
         id: 'microsoft',
         title: 'The Microsoft Paradox',
         subtitle: 'Somehow, Everywhere',
-        color: '#06b6d4',
+        color: colors.cyan500,
         events: [
           {
             date: 'March 2018',
             headline: 'Microsoft CTO Raises Ethics Alarm',
             detail: 'Kevin Scott emails Satya Nadella: "I wonder if the big OpenAI donors are aware of these plans? Ideologically, I can\'t imagine that they funded an open effort to concentrate [machine learning] talent so that they could then go build a closed, for profit thing on its back."',
             tag: 'COURT EXHIBIT',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -366,7 +402,7 @@
             headline: 'Microsoft Invests $1B',
             detail: 'Despite Kevin Scott\'s 2018 ethics concerns, Microsoft invests $1 billion in OpenAI LP and secures exclusive commercial licenses.',
             tag: 'INVESTMENT',
-            tagColor: '#06b6d4',
+            tagColor: colors.cyan500,
             isKey: true
           },
           {
@@ -374,7 +410,7 @@
             headline: '"Effectively Owning" OpenAI',
             detail: 'Court filings cite internal Microsoft notes referencing optics and the phrase "we are effectively owning" OpenAI. Nadella noted the need to consider Musk\'s perspective on "closed openai."',
             tag: 'INTERNAL',
-            tagColor: '#ef4444',
+            tagColor: colors.red500,
             isKey: true
           },
           {
@@ -382,21 +418,21 @@
             headline: 'Microsoft Offers to Hire Everyone',
             detail: 'During the OpenAI board crisis, Microsoft publicly signals it would hire Altman and any departing OpenAI staff, effectively guaranteeing Altman\'s leverage.',
             tag: 'LEVERAGE',
-            tagColor: '#06b6d4'
+            tagColor: colors.cyan500
           },
           {
             date: 'May 2025',
             headline: 'Musk + Nadella at Build',
             detail: 'Musk appears with Nadella at Microsoft Build. Nadella references Musk\'s history as a Windows developer and Microsoft intern. The man suing Microsoft is also their partner.',
             tag: 'IRONY',
-            tagColor: '#f59e0b'
+            tagColor: colors.amber500
           },
           {
             date: '2025',
             headline: 'Azure Hosts Grok',
             detail: 'Microsoft\'s Azure AI Foundry hosts Musk\'s Grok models. Microsoft is now partnered with both sides of the lawsuit it\'s named in.',
             tag: 'PARADOX',
-            tagColor: '#06b6d4',
+            tagColor: colors.cyan500,
             isKey: true
           },
           {
@@ -404,14 +440,14 @@
             headline: 'MACROHARDRR',
             detail: 'xAI names its new $20B data center "MACROHARDRR" — an apparent troll of Microsoft, which remains xAI\'s cloud partner.',
             tag: 'THE NAME',
-            tagColor: '#f59e0b'
+            tagColor: colors.amber500
           },
           {
             date: 'January 2026',
             headline: 'Microsoft\'s Impossible Position',
             detail: 'Simultaneously: OpenAI\'s largest investor ($13B+). Named co-defendant in Musk\'s lawsuit for aiding breach of fiduciary duty. Hosting Musk\'s Grok models on Azure. Court denies summary judgment on aiding and abetting claim — case goes to trial.',
             tag: 'PARADOX',
-            tagColor: '#06b6d4',
+            tagColor: colors.cyan500,
             isKey: true
           }
         ]
@@ -463,6 +499,223 @@
       },
     ];
 
+    // Styles
+    const styles = {
+      container: {
+        minHeight: '100vh',
+        backgroundColor: colors.zinc950,
+        color: colors.zinc100,
+        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      },
+      header: {
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+        backgroundColor: 'rgba(9, 9, 11, 0.95)',
+        backdropFilter: 'blur(8px)',
+        borderBottom: `1px solid ${colors.zinc800}`,
+      },
+      headerInner: {
+        maxWidth: '72rem',
+        margin: '0 auto',
+        padding: '1.5rem',
+      },
+      label: {
+        fontSize: '0.75rem',
+        fontFamily: 'ui-monospace, monospace',
+        letterSpacing: '0.1em',
+        color: colors.zinc500,
+        marginBottom: '0.5rem',
+      },
+      title: {
+        fontSize: 'clamp(1.5rem, 5vw, 2.25rem)',
+        fontWeight: 900,
+        letterSpacing: '-0.025em',
+        lineHeight: 1.2,
+      },
+      subtitle: {
+        color: colors.zinc500,
+        marginTop: '0.5rem',
+        fontSize: '0.875rem',
+        maxWidth: '42rem',
+      },
+      nav: {
+        maxWidth: '72rem',
+        margin: '0 auto',
+        padding: '0 1.5rem 1rem',
+        display: 'flex',
+        gap: '0.5rem',
+        overflowX: 'auto',
+      },
+      navButton: (isActive, color) => ({
+        padding: '0.375rem 0.75rem',
+        fontSize: '0.75rem',
+        fontFamily: 'ui-monospace, monospace',
+        whiteSpace: 'nowrap',
+        borderRadius: '9999px',
+        border: `1px solid ${isActive ? (color || colors.white) : colors.zinc700}`,
+        backgroundColor: isActive ? 'rgba(255,255,255,0.1)' : 'transparent',
+        color: isActive ? (color || colors.white) : colors.zinc500,
+        cursor: 'pointer',
+        transition: 'all 0.2s',
+      }),
+      main: {
+        maxWidth: '72rem',
+        margin: '0 auto',
+        padding: '2rem 1.5rem',
+      },
+      scorecard: {
+        marginBottom: '3rem',
+        padding: '1.5rem',
+        borderRadius: '0.75rem',
+        background: `linear-gradient(to bottom right, ${colors.zinc900}, ${colors.zinc950})`,
+        border: `1px solid ${colors.zinc800}`,
+      },
+      scorecardTitle: {
+        fontSize: '1.125rem',
+        fontWeight: 900,
+        marginBottom: '1rem',
+        color: colors.amber500,
+      },
+      table: {
+        width: '100%',
+        fontSize: '0.875rem',
+        borderCollapse: 'collapse',
+      },
+      th: {
+        textAlign: 'left',
+        padding: '0.5rem',
+        fontFamily: 'ui-monospace, monospace',
+        fontSize: '0.75rem',
+        borderBottom: `1px solid ${colors.zinc800}`,
+      },
+      td: {
+        padding: '0.75rem 0.5rem',
+        borderBottom: `1px solid rgba(39, 39, 42, 0.5)`,
+        color: colors.zinc300,
+      },
+      phase: {
+        marginBottom: '4rem',
+      },
+      phaseHeader: {
+        marginBottom: '2rem',
+      },
+      phaseDot: (color) => ({
+        width: '0.75rem',
+        height: '0.75rem',
+        borderRadius: '9999px',
+        backgroundColor: color,
+        display: 'inline-block',
+        marginRight: '0.75rem',
+      }),
+      phaseSubtitle: {
+        fontSize: '0.75rem',
+        fontFamily: 'ui-monospace, monospace',
+        letterSpacing: '0.1em',
+        color: colors.zinc500,
+        marginBottom: '0.5rem',
+      },
+      phaseTitle: (color) => ({
+        fontSize: 'clamp(1.25rem, 4vw, 1.875rem)',
+        fontWeight: 900,
+        letterSpacing: '-0.025em',
+        color: color,
+      }),
+      timeline: {
+        position: 'relative',
+        paddingLeft: '2rem',
+        borderLeft: `2px solid ${colors.zinc800}`,
+      },
+      event: (isKey) => ({
+        position: 'relative',
+        marginBottom: '2rem',
+        opacity: isKey ? 1 : 0.9,
+      }),
+      eventDot: (isKey, tagColor) => ({
+        position: 'absolute',
+        left: '-2.56rem',
+        width: '1rem',
+        height: '1rem',
+        borderRadius: '9999px',
+        border: `2px solid ${isKey ? tagColor : colors.zinc700}`,
+        backgroundColor: colors.zinc950,
+        transform: isKey ? 'scale(1.25)' : 'scale(1)',
+      }),
+      eventCard: (isKey) => ({
+        padding: '1rem',
+        borderRadius: '0.5rem',
+        backgroundColor: isKey ? 'rgba(24, 24, 27, 0.8)' : 'rgba(24, 24, 27, 0.4)',
+        border: isKey ? `1px solid ${colors.zinc700}` : 'none',
+      }),
+      eventMeta: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        gap: '0.5rem',
+        marginBottom: '0.5rem',
+      },
+      eventDate: {
+        fontSize: '0.75rem',
+        fontFamily: 'ui-monospace, monospace',
+        color: colors.zinc500,
+      },
+      eventTag: (tagColor) => ({
+        padding: '0.125rem 0.5rem',
+        fontSize: '0.625rem',
+        fontFamily: 'ui-monospace, monospace',
+        fontWeight: 700,
+        borderRadius: '0.25rem',
+        backgroundColor: tagColor + '33',
+        color: tagColor,
+      }),
+      eventHeadline: (isKey) => ({
+        fontWeight: 700,
+        marginBottom: '0.25rem',
+        fontSize: isKey ? '1.125rem' : '1rem',
+      }),
+      eventDetail: {
+        fontSize: '0.875rem',
+        color: colors.zinc400,
+        lineHeight: 1.6,
+      },
+      footer: {
+        maxWidth: '72rem',
+        margin: '0 auto',
+        padding: '2rem 1.5rem',
+        borderTop: `1px solid ${colors.zinc800}`,
+        marginTop: '2rem',
+      },
+      footerText: {
+        fontSize: '0.75rem',
+        fontFamily: 'ui-monospace, monospace',
+        color: colors.zinc600,
+      },
+      cta: {
+        marginTop: '4rem',
+        paddingTop: '2rem',
+        borderTop: `1px solid ${colors.zinc800}`,
+        textAlign: 'center',
+      },
+      ctaLabel: {
+        fontSize: '0.75rem',
+        fontFamily: 'ui-monospace, monospace',
+        color: colors.zinc600,
+        marginBottom: '0.5rem',
+      },
+      ctaDate: {
+        fontSize: '1.5rem',
+        fontWeight: 900,
+        color: colors.red500,
+      },
+      ctaText: {
+        fontSize: '0.875rem',
+        color: colors.zinc500,
+        marginTop: '0.5rem',
+        maxWidth: '28rem',
+        margin: '0.5rem auto 0',
+      },
+    };
+
     function OpenAITimeline() {
       const [activePhase, setActivePhase] = useState('all');
       const [showScorecard, setShowScorecard] = useState(false);
@@ -482,28 +735,24 @@
       };
       
       return (
-        <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans">
+        <div style={styles.container}>
           {/* Header */}
-          <header className="sticky top-0 z-50 bg-zinc-950/95 backdrop-blur border-b border-zinc-800">
-            <div className="max-w-6xl mx-auto px-6 py-6">
-              <p className="text-xs font-mono tracking-widest text-zinc-500 mb-2">TIMELINE</p>
-              <h1 className="text-3xl md:text-4xl font-black tracking-tight leading-tight">
+          <header style={styles.header}>
+            <div style={styles.headerInner}>
+              <p style={styles.label}>TIMELINE</p>
+              <h1 style={styles.title}>
                 OpenAI, Google, and xAI: The Saga from 2015–2026
               </h1>
-              <p className="text-zinc-500 mt-2 text-sm md:text-base max-w-2xl">
+              <p style={styles.subtitle}>
                 A timeline of court filings, market shifts, and Microsoft being everywhere
               </p>
             </div>
             
             {/* Phase Navigation */}
-            <div className="max-w-6xl mx-auto px-6 pb-4 flex gap-2 overflow-x-auto scrollbar-hide">
+            <div style={styles.nav} className="scrollbar-hide">
               <button
                 onClick={() => scrollToPhase('all')}
-                className={`px-3 py-1.5 text-xs font-mono whitespace-nowrap rounded-full border transition-all ${
-                  activePhase === 'all' 
-                    ? 'border-white text-white bg-white/10' 
-                    : 'border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:border-zinc-600'
-                }`}
+                style={styles.navButton(activePhase === 'all', null)}
               >
                 FULL TIMELINE
               </button>
@@ -511,59 +760,50 @@
                 <button
                   key={phase.id}
                   onClick={() => scrollToPhase(phase.id)}
-                  className={`px-3 py-1.5 text-xs font-mono whitespace-nowrap rounded-full border transition-all ${
-                    activePhase === phase.id 
-                      ? 'border-current text-white bg-white/10' 
-                      : 'border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:border-zinc-600'
-                  }`}
-                  style={activePhase === phase.id ? { color: phase.color } : {}}
+                  style={styles.navButton(activePhase === phase.id, phase.color)}
                 >
                   {phase.subtitle}
                 </button>
               ))}
               <button
                 onClick={() => setShowScorecard(!showScorecard)}
-                className={`px-3 py-1.5 text-xs font-mono whitespace-nowrap rounded-full border transition-all ${
-                  showScorecard 
-                    ? 'border-amber-500 text-amber-500 bg-amber-500/10' 
-                    : 'border-zinc-700 text-zinc-500 hover:text-amber-500 hover:border-amber-500/50'
-                }`}
+                style={styles.navButton(showScorecard, colors.amber500)}
               >
                 SCORECARD
               </button>
             </div>
           </header>
           
-          <main className="max-w-6xl mx-auto px-6 py-8">
+          <main style={styles.main}>
             {/* Scorecard Panel */}
             {showScorecard && (
-              <div className="mb-12 p-6 rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800">
-                <h2 className="text-lg font-black tracking-tight mb-4 text-amber-500">
+              <div style={styles.scorecard}>
+                <h2 style={styles.scorecardTitle}>
                   SCORECARD — JANUARY 2026
                 </h2>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
+                <div style={{ overflowX: 'auto' }}>
+                  <table style={styles.table}>
                     <thead>
-                      <tr className="border-b border-zinc-800">
-                        <th className="text-left py-2 pr-4 text-zinc-500 font-mono text-xs">METRIC</th>
-                        <th className="text-left py-2 px-4 font-mono text-xs" style={{color: '#4285f4'}}>GOOGLE</th>
-                        <th className="text-left py-2 px-4 font-mono text-xs" style={{color: '#10b981'}}>OPENAI</th>
-                        <th className="text-left py-2 pl-4 font-mono text-xs" style={{color: '#f59e0b'}}>MUSK / xAI</th>
+                      <tr>
+                        <th style={{...styles.th, color: colors.zinc500}}>METRIC</th>
+                        <th style={{...styles.th, color: colors.google}}>GOOGLE</th>
+                        <th style={{...styles.th, color: colors.green500}}>OPENAI</th>
+                        <th style={{...styles.th, color: colors.amber500}}>MUSK / xAI</th>
                       </tr>
                     </thead>
                     <tbody>
                       {scorecard.map((row, i) => (
-                        <tr key={i} className="border-b border-zinc-800/50">
-                          <td className="py-3 pr-4 font-medium text-zinc-400">{row.metric}</td>
-                          <td className="py-3 px-4 text-zinc-300">{row.google}</td>
-                          <td className="py-3 px-4 text-zinc-300">{row.openai}</td>
-                          <td className="py-3 pl-4 text-zinc-300">{row.musk}</td>
+                        <tr key={i}>
+                          <td style={{...styles.td, color: colors.zinc400, fontWeight: 500}}>{row.metric}</td>
+                          <td style={styles.td}>{row.google}</td>
+                          <td style={styles.td}>{row.openai}</td>
+                          <td style={styles.td}>{row.musk}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-                <p className="mt-4 text-xs text-zinc-600 font-mono">
+                <p style={{...styles.footerText, marginTop: '1rem'}}>
                   Based on court filings, company announcements, and reporting as of January 2026.
                 </p>
               </div>
@@ -571,55 +811,37 @@
             
             {/* Timeline */}
             {phases.filter(p => activePhase === 'all' || p.id === activePhase).map(phase => (
-              <div key={phase.id} id={`phase-${phase.id}`} className="relative mb-16">
+              <div key={phase.id} id={`phase-${phase.id}`} style={styles.phase}>
                 {/* Phase Header */}
-                <div className="mb-8">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: phase.color }} />
-                    <span className="text-xs font-mono tracking-widest text-zinc-500">{phase.subtitle}</span>
+                <div style={styles.phaseHeader}>
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
+                    <div style={styles.phaseDot(phase.color)} />
+                    <span style={styles.phaseSubtitle}>{phase.subtitle}</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-black tracking-tight" style={{ color: phase.color }}>
+                  <h2 style={styles.phaseTitle(phase.color)}>
                     {phase.title}
                   </h2>
                 </div>
                 
                 {/* Events */}
-                <div className="relative pl-8 border-l-2 border-zinc-800 space-y-8">
+                <div style={styles.timeline}>
                   {phase.events.map((event, i) => (
-                    <div 
-                      key={i} 
-                      className={`relative group ${event.isKey ? 'scale-100' : 'opacity-90 hover:opacity-100'}`}
-                    >
+                    <div key={i} style={styles.event(event.isKey)}>
                       {/* Timeline dot */}
-                      <div 
-                        className={`absolute -left-[25px] w-4 h-4 rounded-full border-2 bg-zinc-950 ${
-                          event.isKey ? 'border-white scale-125' : 'border-zinc-700 group-hover:border-zinc-500'
-                        }`}
-                        style={event.isKey ? { borderColor: event.tagColor } : {}}
-                      />
+                      <div style={styles.eventDot(event.isKey, event.tagColor)} />
                       
                       {/* Event Card */}
-                      <div className={`p-4 rounded-lg transition-all ${
-                        event.isKey 
-                          ? 'bg-zinc-900/80 border border-zinc-700' 
-                          : 'bg-zinc-900/40 hover:bg-zinc-900/60'
-                      }`}>
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <span className="text-xs font-mono text-zinc-500">{event.date}</span>
-                          <span 
-                            className="px-2 py-0.5 text-[10px] font-mono font-bold rounded"
-                            style={{ 
-                              backgroundColor: event.tagColor + '20', 
-                              color: event.tagColor 
-                            }}
-                          >
+                      <div style={styles.eventCard(event.isKey)}>
+                        <div style={styles.eventMeta}>
+                          <span style={styles.eventDate}>{event.date}</span>
+                          <span style={styles.eventTag(event.tagColor)}>
                             {event.tag}
                           </span>
                         </div>
-                        <h3 className={`font-bold mb-1 ${event.isKey ? 'text-lg' : 'text-base'}`}>
+                        <h3 style={styles.eventHeadline(event.isKey)}>
                           {event.headline}
                         </h3>
-                        <p className="text-sm text-zinc-400 leading-relaxed">
+                        <p style={styles.eventDetail}>
                           {event.detail}
                         </p>
                       </div>
@@ -630,20 +852,20 @@
             ))}
             
             {/* Bottom CTA */}
-            <div className="mt-16 pt-8 border-t border-zinc-800 text-center">
-              <p className="text-xs font-mono text-zinc-600 mb-2">EXPECTED TRIAL WINDOW</p>
-              <p className="text-2xl font-black text-red-500">APRIL 2026</p>
-              <p className="text-sm text-zinc-500 mt-2 max-w-md mx-auto">
+            <div style={styles.cta}>
+              <p style={styles.ctaLabel}>EXPECTED TRIAL WINDOW</p>
+              <p style={styles.ctaDate}>APRIL 2026</p>
+              <p style={styles.ctaText}>
                 The litigation involves claims about OpenAI's structure and governance. Some claims were resolved at summary judgment; others proceed to trial.
               </p>
             </div>
           </main>
           
           {/* Footer */}
-          <footer className="max-w-6xl mx-auto px-6 py-8 border-t border-zinc-800 mt-8">
-            <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-600">
-              <span>Sources: Court filings (N.D. Cal.), Fortune, CNBC, TIME, CNN, Reuters, The Verge, Similarweb</span>
-            </div>
+          <footer style={styles.footer}>
+            <p style={styles.footerText}>
+              Sources: Court filings (N.D. Cal.), OpenAI blog post (Jan 16, 2026), Fortune, CNBC, TIME, CNN, Reuters, The Verge, Similarweb
+            </p>
           </footer>
         </div>
       );
